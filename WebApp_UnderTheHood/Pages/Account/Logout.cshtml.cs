@@ -13,7 +13,7 @@ namespace WebApp_UnderTheHood.Pages.Account
         public async Task<IActionResult> OnPostAsync()
         {
             await HttpContext.SignOutAsync("MyCookieAuth");
-            return RedirectToAction("/Index");
+            return RedirectToPage("/Index");
         }
     }
 }

@@ -9,7 +9,7 @@ builder.Services.AddRazorPages();
 builder.Services.AddAuthentication("MyCookieAuth").AddCookie("MyCookieAuth", options =>
 {
     options.Cookie.Name = "MyCookieAuth";
-    options.ExpireTimeSpan = TimeSpan.FromSeconds(2000);
+    options.ExpireTimeSpan = TimeSpan.FromSeconds(200);
     //options.LoginPath = "/Account/Login";
 });
 

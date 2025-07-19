@@ -10,6 +10,9 @@ namespace WebApp_UnderTheHood.Pages
     {
         private readonly IHttpClientFactory httpClientFactory;
 
+        [BindProperty]
+        public List<WeatherForecastDTO> weatherForecastItems { get; set; } = new List<WeatherForecastDTO>();    //new List<WeatherForecastDTO>() is to avoid null reference warning
+
         public HRManagerModel(IHttpClientFactory httpClientFactory)
         {
             this.httpClientFactory = httpClientFactory;
@@ -19,7 +22,7 @@ namespace WebApp_UnderTheHood.Pages
         public async Task OnGetAsync()
         {
             var httpClient = httpClientFactory.CreateClient("OurWebAPI");
-            httpClient.GetFromJsonAsync<List<WeatherForecastDTO>>("WeatherForecast");
+            weatherForecastItems = await httpClient.GetFromJsonAsync<List<WeatherForecastDTO>>("WeatherForecast")??new List<WeatherForecastDTO>();     //new List<WeatherForecastDTO>() is to avoid null reference warning
         }
     }
 }

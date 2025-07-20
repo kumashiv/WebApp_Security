@@ -31,6 +31,13 @@ builder.Services.AddAuthentication(options =>
     };
 });
 
+// Apply policy
+builder.Services.AddAuthorization(options =>
+{
+    options.AddPolicy("AdminOnly",
+        policy => policy.RequireClaim("Admin"));
+});
+
 var app = builder.Build();
 
 // Configure the HTTP request pipeline.
